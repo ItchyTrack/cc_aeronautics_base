@@ -1,0 +1,17 @@
+{
+    "arm.base": {"pull": [
+		"util/*",
+		"servo/*"
+	]},
+    "arm.shoulder": {"pull": [
+		"util/*",
+		"servo/*"
+	]},
+    "arm.elbow": {"pull": [
+		"util/*",
+		"servo/*"
+	]},
+    "arm.controller": {"pull": [
+		"util/*"
+	]}
+}

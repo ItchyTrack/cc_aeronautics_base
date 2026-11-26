@@ -1,4 +1,4 @@
-dofile("app/util/table.lua")
+dofile("util/table.lua")
 printOld = printOld or print
 formater = {}
 local formater = formater

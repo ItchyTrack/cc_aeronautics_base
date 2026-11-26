@@ -1,6 +1,6 @@
 return {
 main = function(spawn)
 print("BASED")
-require("util/print.lua")
+require("util/print")
 end
 }

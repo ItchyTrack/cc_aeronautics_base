@@ -1,3 +1,4 @@
+require("a")
 return {
 main = function(spawn)
 print("BASED")

@@ -1,7 +1,7 @@
 return {
 main = function(spawn)
 print("BASED")
-dofile("app/util/print.lua")
-print(dofile("app/main_copy.lua"))
+require("app/util/print.lua")
+print(debug.getinfo())
 end
 }

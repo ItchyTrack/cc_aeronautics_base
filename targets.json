@@ -1,17 +1,22 @@
 {
     "arm.base": {"pull": [
 		"util/*",
-		"servo/*"
+		"servo/*",
+		"computers/arm/base|*"
 	]},
     "arm.shoulder": {"pull": [
 		"util/*",
-		"servo/*"
+		"servo/*",
+		"computers/arm/shoulder|*"
 	]},
     "arm.elbow": {"pull": [
 		"util/*",
-		"servo/*"
+		"servo/*",
+		"computers/arm/elbow|*"
 	]},
     "arm.controller": {"pull": [
-		"util/*"
+		"util/*",
+		"servo/client.lua",
+		"computers/arm/controller|*"
 	]}
 }

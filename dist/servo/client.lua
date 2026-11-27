@@ -1,4 +1,4 @@
-dofile("servo/updater.lua")
+require("servo/updater")
 function make_servo_client(server_id)
 local modem = peripheral.find("modem")
 if modem == nil then error("no modem attached", 2) end

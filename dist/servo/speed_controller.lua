@@ -1,4 +1,4 @@
-dofile("servo/motor.lua")
+require("servo/motor")
 local deg_per_tick_per_rpm = 0.6
 function make_servo_with_speed_controller(speed_controller, rpm_multiplier)
 function speed_controller.setSpeed(rpm)

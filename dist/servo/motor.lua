@@ -1,4 +1,4 @@
-require("servo/updater.lua")
+require("servo/updater")
 local deg_per_tick_per_rpm = 0.6
 function make_servo(motor, rpm_multiplier)
 motor.setSpeed(0)

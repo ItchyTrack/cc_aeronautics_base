@@ -1,11 +1,14 @@
-require("servo/updater")
-function make_servo_client(server_id)
+this = {}
+this.init = function(servo_id)
 local modem = peripheral.find("modem")
 if modem == nil then error("no modem attached", 2) end
 if not rednet.isOpen(peripheral.getName(modem)) then
 rednet.open(peripheral.getName(modem))
 end
-local function send(msg) rednet.send(server_id, msg, "servo") end
+local function send(msg)
+msg.id = servo_id
+rednet.broadcast(msg, "servo")
+end
 local servo = {
 set_zero = function()
 send({ cmd = "set_zero" })
@@ -23,6 +26,6 @@ update = function()
 send({ cmd = "ping" })
 end,
 }
-servos[#servos + 1] = servo
 return servo
 end
+return this

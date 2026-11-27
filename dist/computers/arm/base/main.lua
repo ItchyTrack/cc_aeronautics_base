@@ -1,11 +1,8 @@
 return {
 main = function(spawn)
-print("BASED")
 require("util/print")
-print(require("a"))
-print(a(2))
-a = 2
-print(require("a"))
-print(a)
+require("servo/updater").init(spawn)
+local servo = require("servo/speed_controller").new()
+require("servo/server").init_server(spawn, servo, "base")
 end
 }

@@ -1,4 +1,4 @@
-this = {}
+local this = {}
 this.init = function(servo_id)
 local modem = peripheral.find("modem")
 if modem == nil then error("no modem attached", 2) end

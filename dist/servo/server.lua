@@ -1,4 +1,4 @@
-this = {}
+local this = {}
 this.init_server = function(spawn, servo, id)
 local modem = peripheral.find("modem")
 if modem == nil then error("no modem attached", 2) end

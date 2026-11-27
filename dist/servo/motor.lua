@@ -1,7 +1,7 @@
 local updater = require("servo/updater")
 local deg_per_tick_per_rpm = 0.6
-this = {}
-this.make_servo = function(motor, rpm_multiplier)
+local this = {}
+this.new = function(motor, rpm_multiplier)
 motor.setSpeed(0)
 local current_angle = 0;
 local wanted_rpm = 0;

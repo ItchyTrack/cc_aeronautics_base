@@ -1,14 +1,3 @@
-function values(t)
-    local valuesT = {}
-    for i, v in ipairs(t) do
-        valuesT[i] = v
-    end
-    local i = 0
-    return function()
-        i = i + 1; return valuesT[i]
-    end
-end
-
 function table.contains(tbl, value)
     for _, v in ipairs(tbl) do
         if (v == value) then

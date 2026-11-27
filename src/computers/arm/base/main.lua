@@ -1,7 +1,7 @@
 return {
 	main = function(spawn)
 		print("BASED")
-		dofile("util/print.lua")
-		print(dofile("main_copy.lua"))
+		require("util/print")
+		print({a = { hello = {1,2,3,4,5, o = "my name is computer"}}})
 	end
 }

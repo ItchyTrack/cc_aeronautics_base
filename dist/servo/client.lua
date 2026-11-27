@@ -7,6 +7,7 @@ rednet.open(peripheral.getName(modem))
 end
 local function send(msg)
 msg.id = servo_id
+print("sent", msg, "on servo")
 rednet.broadcast(msg, "servo")
 end
 local servo = {

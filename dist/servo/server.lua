@@ -7,6 +7,7 @@ rednet.open(peripheral.getName(modem))
 end
 spawn(function()
 while true do
+print("waiting on servo")
 local sender, msg = rednet.receive("servo")
 if sender and msg then
 print(msg.id)

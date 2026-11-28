@@ -1,22 +1,18 @@
-dofile("servo/updater.lua")
-
-function start_servo_server(servo)
+local this = {}
+this.init_server = function(spawn, servo, id)
 	local modem = peripheral.find("modem")
 	if modem == nil then error("no modem attached", 2) end
 	if not rednet.isOpen(peripheral.getName(modem)) then
 		rednet.open(peripheral.getName(modem))
 	end
 
-	local f1 = function()
+	spawn(function()
 		while true do
-			update_servos()
-		end
-	end
-
-	local f2 = function()
-		while true do
+			print("waiting on servo")
 			local sender, msg = rednet.receive("servo")
 			if sender and msg then
+				print(msg.id)
+				if id ~= msg.id then goto continue end
 				if msg.cmd == "set_zero" then
 					servo.set_zero()
 				elseif msg.cmd == "set_angle_in_sec" then
@@ -27,11 +23,9 @@ function start_servo_server(servo)
 					servo.set_rpm(msg.rpm)
 				end
 			end
+		    ::continue::
 		end
-	end
-
-	parallel.waitForAll(
-		f1,
-		f2
-	)
+	end)
 end
+
+return this

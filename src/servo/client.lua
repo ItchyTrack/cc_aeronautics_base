@@ -1,13 +1,16 @@
-dofile("servo/updater.lua")
-
-function make_servo_client(server_id)
+local this = {}
+this.init = function(servo_id)
 	local modem = peripheral.find("modem")
 	if modem == nil then error("no modem attached", 2) end
 	if not rednet.isOpen(peripheral.getName(modem)) then
 		rednet.open(peripheral.getName(modem))
 	end
 
-	local function send(msg) rednet.send(server_id, msg, "servo") end
+	local function send(msg)
+		msg.id = servo_id
+		print("sent", msg, "on servo")
+		rednet.broadcast(msg, "servo")
+	end
 
 	local servo = {
 		set_zero = function()
@@ -26,7 +29,7 @@ function make_servo_client(server_id)
 			send({ cmd = "ping" })
 		end,
 	}
-
-	servos[#servos + 1] = servo
 	return servo
 end
+
+return this

@@ -1,15 +1,21 @@
-if servos == nil then
-	servos = {}
+local this = {}
+
+this.servos = {}
+this.is_running = false
+
+this.init = function(spawn)
+	if this.is_running then return end
+	this.is_running = true
+	spawn(function()
+		while true do
+			for _, servo in pairs(this.servos) do
+				if servo == nil or servo.active ~= true then goto continue end
+				servo.update()
+				::continue::
+			end
+			sleep(1/20)
+		end
+	end)
 end
 
-function clear_servos()
-	servos = {}
-end
-
-function update_servos()
-	for _, servo in pairs(servos) do
-		if servo == nil or servo.active ~= true then ::continue:: end
-		servo.update()
-	end
-	sleep(1/20)
-end
+return this

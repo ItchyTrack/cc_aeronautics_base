@@ -1,7 +1,9 @@
-require("servo/updater.lua")
-
+local updater = require("servo/updater")
 local deg_per_tick_per_rpm = 0.6
-function make_servo(motor, rpm_multiplier)
+
+local this = {}
+
+this.new = function(motor, rpm_multiplier)
 	motor.setSpeed(0)
 	local current_angle = 0;
 	local wanted_rpm = 0;
@@ -38,6 +40,8 @@ function make_servo(motor, rpm_multiplier)
 			motor.setSpeed(rpm * rpm_multiplier)
 		end,
 	}
-	servos[#servos + 1] = servo
+	updater.servos[#updater.servos + 1] = servo
 	return servo
 end
+
+return this

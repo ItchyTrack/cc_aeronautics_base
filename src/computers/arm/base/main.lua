@@ -1,7 +1,8 @@
 return {
 	main = function(spawn)
-		print("BASED")
 		require("util/print")
-		print({a = { hello = {1,2,3,4,5, o = "my name is computer"}}})
+		require("servo/updater").init(spawn)
+		local servo = require("servo/speed_controller").new(peripheral.wrap("right"), 4)
+		require("servo/server").init_server(spawn, servo, "base")
 	end
 }
